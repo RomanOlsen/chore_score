@@ -1,4 +1,5 @@
 
+
 namespace chore_score.Services;
 public class ChoresService
 {
@@ -14,9 +15,14 @@ public class ChoresService
     return choresGotten;
   }
 
-  internal Chore AddChore()
+  internal Chore AddChore(Chore data)
   {
-    Chore addedChore = _repository.AddChore();
+    Chore addedChore = _repository.AddChore(data);
     return addedChore;
+  }
+
+  internal Chore CompleteChore()
+  {
+    throw new NotImplementedException();
   }
 }

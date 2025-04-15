@@ -24,11 +24,23 @@ public class ChoresController : ControllerBase
   }
 
   [HttpPost]
-  public ActionResult<Chore> AddChore(){
+  public ActionResult<Chore> AddChore([FromBody] Chore choreData){
     try
     {
-      Chore addedChore = _choresService.AddChore();
+      Chore addedChore = _choresService.AddChore(choreData);
       return Ok(addedChore);
+    }
+    catch (Exception)
+    {
+      return BadRequest();
+    }
+  }
+  [HttpPut("{choreId}")]
+  public ActionResult<Chore> CompleteChore(int choreId){
+    try
+    {
+      Chore completedChore = _choresService.CompleteChore();
+      return completedChore;
     }
     catch (Exception)
     {
