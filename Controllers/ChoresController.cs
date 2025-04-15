@@ -23,4 +23,17 @@ public class ChoresController : ControllerBase
     }
   }
 
+  [HttpPost]
+  public ActionResult<Chore> AddChore(){
+    try
+    {
+      Chore addedChore = _choresService.AddChore();
+      return Ok(addedChore);
+    }
+    catch (Exception)
+    {
+      return BadRequest();
+    }
+  }
+
 }

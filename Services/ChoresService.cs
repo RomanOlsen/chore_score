@@ -1,3 +1,4 @@
+
 namespace chore_score.Services;
 public class ChoresService
 {
@@ -11,5 +12,11 @@ public class ChoresService
   {
     List<Chore> choresGotten = _repository.GetChores();
     return choresGotten;
+  }
+
+  internal Chore AddChore()
+  {
+    Chore addedChore = _repository.AddChore();
+    return addedChore;
   }
 }
