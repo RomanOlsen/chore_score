@@ -48,6 +48,19 @@ public class ChoresRepository
 
   }
 
+  internal void DeleteChore(int choreId)
+  {
+    string sqlCommand = "DELETE FROM chores WHERE id = @choreId;";
+
+    int choresDeleted = _db.Execute(sqlCommand, new { choreId });
+
+    if (choresDeleted != 1)
+    {
+      throw new Exception("Something went wrong. We couldnt find a chore with that Id");
+    }
+
+  }
+
 
   // public Chore GetChoreById(int choreId)
   // {

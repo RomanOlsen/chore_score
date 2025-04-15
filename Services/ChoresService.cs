@@ -1,5 +1,6 @@
 
 
+
 namespace chore_score.Services;
 public class ChoresService
 {
@@ -25,5 +26,10 @@ public class ChoresService
   {
     Chore completedChore = _repository.CompleteChore(choreId);
     return completedChore;
+  }
+
+  internal void DeleteChore(int choreId)
+  {
+    _repository.DeleteChore(choreId);
   }
 }

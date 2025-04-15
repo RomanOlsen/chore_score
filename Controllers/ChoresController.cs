@@ -50,4 +50,17 @@ public class ChoresController : ControllerBase
     }
   }
 
+  [HttpDelete("{choreId}")]
+  public ActionResult<string> DeleteChore(int choreId){ // use string since we only need to return a message
+    try
+    {
+      _choresService.DeleteChore(choreId);
+      return Ok($"Chore {choreId} was deleted");
+    }
+    catch (Exception error)
+    {
+      return BadRequest(error.Message);
+    }
+  }
+
 }
