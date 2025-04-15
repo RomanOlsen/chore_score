@@ -21,8 +21,9 @@ public class ChoresService
     return addedChore;
   }
 
-  internal Chore CompleteChore()
+  internal Chore CompleteChore(int choreId)
   {
-    throw new NotImplementedException();
+    Chore completedChore = _repository.CompleteChore(choreId);
+    return completedChore;
   }
 }

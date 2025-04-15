@@ -24,7 +24,8 @@ public class ChoresController : ControllerBase
   }
 
   [HttpPost]
-  public ActionResult<Chore> AddChore([FromBody] Chore choreData){
+  public ActionResult<Chore> AddChore([FromBody] Chore choreData)
+  {
     try
     {
       Chore addedChore = _choresService.AddChore(choreData);
@@ -36,15 +37,16 @@ public class ChoresController : ControllerBase
     }
   }
   [HttpPut("{choreId}")]
-  public ActionResult<Chore> CompleteChore(int choreId){
+  public ActionResult<Chore> CompleteChore(int choreId)
+  {
     try
     {
-      Chore completedChore = _choresService.CompleteChore();
+      Chore completedChore = _choresService.CompleteChore(choreId);
       return completedChore;
     }
-    catch (Exception)
+    catch (Exception error)
     {
-      return BadRequest();
+      return BadRequest(error.Message);
     }
   }
 

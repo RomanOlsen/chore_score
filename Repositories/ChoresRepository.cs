@@ -27,7 +27,32 @@ public class ChoresRepository
 
       SELECT * FROM chores WHERE id = LAST_INSERT_ID();";
 
-      Chore addedChore = _db.Query<Chore>(sqlCommand, choreData).SingleOrDefault();
-      return addedChore;
+    Chore addedChore = _db.Query<Chore>(sqlCommand, choreData).SingleOrDefault();
+    return addedChore;
   }
+
+  internal Chore CompleteChore(int choreId)
+  {
+
+    // Chore foundChore = this.GetChoreById(choreId);
+
+    string sqlCommand = @"
+  UPDATE chores
+  SET isComplete = true
+  WHERE id = @choreId;
+  
+  SELECT * FROM chores WHERE id = @choreId;";
+
+    Chore completedChore = _db.Query<Chore>(sqlCommand, new { choreId = choreId }).SingleOrDefault();
+    return completedChore;
+
+  }
+
+
+  // public Chore GetChoreById(int choreId)
+  // {
+  //   string sql = "SELECT * FROM chores WHERE id = @choreId;"; //
+  //   Chore chore = _db.Query<Chore>(sql, new { Id = choreId }).SingleOrDefault();
+  //   return chore;
+  // }
 }
